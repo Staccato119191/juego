@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Puntos</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #titulo {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  #contador {
+    font-size: 48px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="titulo">CONTADOR, LLEGA A 1.000.000 Y YA VERAS</div>
+<div id="contador">0</div>
+<script>
+  let contador = 0;
+
+  document.getElementById('contador').addEventListener('click', function() {
+    incrementarContador();
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === ' ') {
+      incrementarContador();
+    }
+  });
+
+  function incrementarContador() {
+    contador++;
+    if (contador % 1000 === 0) {
+      document.getElementById('titulo').textContent = 'YA FALTA POCO, FELICITACIONES';
+    } else if (contador === 1000000) {
+      document.getElementById('titulo').textContent = '¡LLEGASTE A 1.000.000! ¡FELICITACIONES!';
+    }
+    document.getElementById('contador').textContent = contador;
+  }
+</script>
+</body>
+</html>
